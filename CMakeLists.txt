@@ -16,10 +16,10 @@ SET(ProjectName DataStructuresCpp)
 PROJECT(${ProjectName})
 
 INCLUDE_DIRECTORIES(
-    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/include
     )
 
-FILE(GLOB Sources ${CMAKE_SOURCE_DIR}/*.cpp)
+FILE(GLOB Sources ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
 ADD_EXECUTABLE(${ProjectName}
     ${Sources}
