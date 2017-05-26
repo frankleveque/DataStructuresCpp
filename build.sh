@@ -33,7 +33,7 @@ cmake  -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" ../..
 cd ../../
 
 cd ./build/codeblocks
-cmake -G "CodeBlocks - Unix Makefiles" ../.. 
+cmake -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug" ../.. 
 
 cd ../../
 
@@ -44,12 +44,13 @@ readonly OS
 if [ "$OS" = "GNU/Linux" ]
 then
     make -j5 -C ./build/debug/  
-    make -j5 -C ./build/release/ 
+    make -j5 -C ./build/release/ > /dev/null 2>&1
 
 elif [ "$OS" = "Msys" ]
 then
     mingw32-make -j5 -C ./build/debug/ 
-    mingw32-make -j5 -C ./build/release/ 
+    mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
+
 
 else 
     echo "$OS" not supported 
