@@ -21,12 +21,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BTNODE_HPP
 #define BTNODE_HPP
 
+#include <memory>
+
+template <class T>
 class BTNode{
     public:
-        BTNode* left;
-        BTNode* right;
-
+        std::shared_ptr<BTNode<T>> left;
+        std::shared_ptr<BTNode<T>> right;
+        T value;
         BTNode();
+        BTNode(T val);
 };
+
+#include "btnode.tpp"
 
 #endif

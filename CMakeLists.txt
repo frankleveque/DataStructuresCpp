@@ -16,18 +16,23 @@ SET(ProjectName DataStructuresCpp)
 PROJECT(${ProjectName})
 
 INCLUDE_DIRECTORIES(
-    ${CMAKE_SOURCE_DIR}/include
-    )
+    ${CMAKE_SOURCE_DIR}/include)
 
-FILE(GLOB Sources ${CMAKE_SOURCE_DIR}/src/*.cpp)
+FILE(GLOB Headers 
+    ${CMAKE_SOURCE_DIR}/include/*.hpp 
+    ${CMAKE_SOURCE_DIR}/include/*.h)
+FILE(GLOB Sources 
+    ${CMAKE_SOURCE_DIR}/src/*.cpp)
+FILE(GLOB TestSources 
+    ${CMAKE_SOURCE_DIR}/tests/*.cpp)
 
 ADD_EXECUTABLE(${ProjectName}
+    ${Headers}
     ${Sources}
-    )
+    ${TestSources} )
 
 SET_TARGET_PROPERTIES(${ProjectName} PROPERTIES COMPILE_FLAGS
-    "-Wall -Wextra -static -static-libgcc -static-libstdc++ -Os "
-    )
+    "-Wall -Wextra -static -static-libgcc -static-libstdc++ -Os " )
 
 SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
 SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
