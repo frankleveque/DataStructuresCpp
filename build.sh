@@ -39,14 +39,13 @@ cd ../../
 
 echo ""
 
+echo ">> $OSTYPE detected" 
 case "$OSTYPE" in
     msys*)     
-        echo ">>MSYS detected"
         mingw32-make -j5 -C ./build/debug/ 
         mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
         ;;
     *)          
-        echo "$OSTYPE detected" 
         make -j5 -C ./build/debug 
 		make -j5 -C ./build/release/ > /dev/null 2>&1
 		;;
