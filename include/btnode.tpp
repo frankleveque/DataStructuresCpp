@@ -24,7 +24,7 @@ template <typename T>
 BTNode<T>::BTNode(){
     left.reset();
     right.reset();
-    value.reset(new T);	
+    value.reset(new T());	
 }
 
 template <typename T>
