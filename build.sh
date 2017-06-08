@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Author: Frank Leveque
 # This shell script generates 3 projects in the ./build/ directory 
@@ -39,14 +39,17 @@ cd ../../
 
 case "$OSTYPE" in
 	linux*)   
+        echo Linux detected
 		make -j5 -C ./build/debug 
 		make -j5 -C ./build/release/ > /dev/null 2>&1
 		;;
 	darwin*)
+        echo Mac detected
 		make -j5 -C ./build/debug 
 		make -j5 -C ./build/release/ > /dev/null 2>&1
 		;; 
 	win*)     
+        echo Win detected
 		mingw32-make -j5 -C ./build/debug/ 
 		mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
 		;;

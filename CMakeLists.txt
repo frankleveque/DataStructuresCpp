@@ -32,8 +32,8 @@ ADD_EXECUTABLE(${ProjectName}
     ${TestSources} )
 
 SET_TARGET_PROPERTIES(${ProjectName} PROPERTIES COMPILE_FLAGS
-    "-Wall -Wextra -static -static-libgcc -static-libstdc++ -Os " )
+    "-Wall -Wextra -static -static-libgcc -static-libstdc++ ")
 
-SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s -Os")
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s -Os")
 
