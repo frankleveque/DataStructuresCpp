@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <memory>
 
-template <class T>
+template <typename T>
 class BTNode{
     public:
         std::shared_ptr<BTNode<T>> left;
