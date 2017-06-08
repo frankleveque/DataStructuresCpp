@@ -37,22 +37,22 @@ cmake -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug" ../..
 
 cd ../../
 
-# make debug and release binaries with make
-OS=$(uname -o)
-readonly OS
-
-if [ "$OS" = "GNU/Linux" ]
-then
-    make -j5 -C ./build/debug/  
-    make -j5 -C ./build/release/ > /dev/null 2>&1
-
-elif [ "$OS" = "Msys" ]
-then
-    mingw32-make -j5 -C ./build/debug/ 
-    mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
-
-
-else 
-    echo "$OS" not supported 
-fi
+case "$OSTYPE" in
+	linux*)   
+		make -j5 -C ./build/debug 
+		make -j5 -C ./build/release/ > /dev/null 2>&1
+		;;
+	darwin*)
+		make -j5 -C ./build/debug 
+		make -j5 -C ./build/release/ > /dev/null 2>&1
+		;; 
+	win*)     
+		mingw32-make -j5 -C ./build/debug/ 
+		mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
+		;;
+	cygwin*)  echo unsupported: "Cygwin" ;;
+	bsd*)     echo unsupported: "BSD" ;;
+	solaris*) echo unsupported: "SOLARIS" ;;
+	*)        echo "unknown: $OSTYPE" ;;
+esac
 
