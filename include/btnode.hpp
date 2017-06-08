@@ -28,7 +28,7 @@ class BTNode{
     public:
         std::shared_ptr<BTNode<T>> left;
         std::shared_ptr<BTNode<T>> right;
-        T value;
+	std::unique_ptr<T> value;
         BTNode();
         BTNode(T val);
 };

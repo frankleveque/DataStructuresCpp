@@ -24,13 +24,14 @@ template <class T>
 BTNode<T>::BTNode(){
     left.reset();
     right.reset();
+    value.reset(new T);	
 }
 
 template <class T>
 BTNode<T>::BTNode(T val){
     left.reset();
     right.reset();
-    value = val;
+    *value = val;
 }
 
 
