@@ -48,7 +48,7 @@ case "$OSTYPE" in
 		make -j5 -C ./build/debug 
 		make -j5 -C ./build/release/ > /dev/null 2>&1
 		;; 
-	win*)     
+	msys*)     
         echo Win detected
 		mingw32-make -j5 -C ./build/debug/ 
 		mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
