@@ -37,25 +37,17 @@ cmake -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug" ../..
 
 cd ../../
 
+echo ""
+
+echo ">> $OSTYPE detected" 
 case "$OSTYPE" in
-	linux*)   
-        echo Linux detected
-		make -j5 -C ./build/debug 
+    msys*)     
+        mingw32-make -j5 -C ./build/debug/ 
+        mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
+        ;;
+    *)          
+        make -j5 -C ./build/debug 
 		make -j5 -C ./build/release/ > /dev/null 2>&1
 		;;
-	darwin*)
-        echo Mac detected
-		make -j5 -C ./build/debug 
-		make -j5 -C ./build/release/ > /dev/null 2>&1
-		;; 
-	msys*)     
-        echo Win detected
-		mingw32-make -j5 -C ./build/debug/ 
-		mingw32-make -j5 -C ./build/release/ > /dev/null 2>&1
-		;;
-	cygwin*)  echo unsupported: "Cygwin" ;;
-	bsd*)     echo unsupported: "BSD" ;;
-	solaris*) echo unsupported: "SOLARIS" ;;
-	*)        echo "unknown: $OSTYPE" ;;
 esac
 
