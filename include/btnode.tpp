@@ -20,14 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "btnode.hpp"
 
-template <class T>
+template <typename T>
 BTNode<T>::BTNode(){
     left.reset();
     right.reset();
     value.reset(new T);	
 }
 
-template <class T>
+template <typename T>
 BTNode<T>::BTNode(T val){
     left.reset();
     right.reset();
