@@ -8,10 +8,10 @@
 TEST_CASE("Binary Tree class tests"){
     {
     BTNode<int> root;
-    REQUIRE(root.value == 0);
+    REQUIRE(*root.value == 0);
     }
     {
     BTNode<std::string> root;
-    REQUIRE(root.value == "");
+    REQUIRE(*root.value == "");
     }   
 }
