@@ -1,6 +1,6 @@
 /*
 DataStructuresCpp - Various data structures implemented in c++
-=============================================================================== 
+===============================================================================
 Copyright (C) 2017 Frank Leveque
 
 This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-=============================================================================== 
+===============================================================================
 */
 
 #ifndef BTNODE_HPP
@@ -28,11 +28,13 @@ class BTNode{
     public:
         std::shared_ptr<BTNode<T>> left;
         std::shared_ptr<BTNode<T>> right;
-	std::unique_ptr<T> value;
+        T value;
         BTNode();
-        BTNode(T val);
+        BTNode(T);
+        void insert(const BTNode<T>&) ;
+        uint32_t size() ;
 };
 
-#include "btnode.tpp"
+#include "btnode.cpp"
 
 #endif
