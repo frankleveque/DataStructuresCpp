@@ -29,6 +29,7 @@ BTNode<T>::BTNode(){
 template <typename T>
 BTNode<T>::BTNode(T val) {
         this->value=val;
+
 }
 
 template <typename T>
