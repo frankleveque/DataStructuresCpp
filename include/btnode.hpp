@@ -35,6 +35,48 @@ class BTNode{
         uint32_t size() ;
 };
 
-#include "btnode.cpp"
+template <typename T>
+BTNode<T>::BTNode(){
+    left.reset();
+    right.reset();
 
+}
+
+template <typename T>
+BTNode<T>::BTNode(T val): BTNode(){
+    this->value = val;
+}
+
+
+
+template <typename T>
+void BTNode<T>::insert(const BTNode<T>& other){
+
+    if(this->value == other.value){
+        return;
+    }
+    if(this->value > other.value){
+        if(!left){
+            left.reset(new BTNode<T>());
+            left->value = other.value;
+        }else{
+            left->insert(other);
+        }
+    }else if(this->value < other.value){
+        if(!right){
+            right.reset(new BTNode<T>());
+            right->value = other.value;
+        }else{
+            right->insert(other);
+        }
+
+    }
+}
+
+template <typename T>
+uint32_t BTNode<T>::size(){
+    return 1 +
+        (right == nullptr ? 0 : right->size()) +
+        (left == nullptr ? 0 : left->size());
+}
 #endif
