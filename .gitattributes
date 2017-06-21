@@ -1,0 +1,22 @@
+# Set the default behavior for all files
+* text=auto
+
+# List text files that should have system-specific line endings on checkout
+*.html text
+*.css  text
+
+# List files that should have WIN line endings on checkout and not be converted
+# to the local operating system
+*.sln text eol=crlf
+
+
+# List files that should have UNIX line endings on checkout and not be converted
+# to the local operating system
+*.cpp text eol=lf
+*.hpp text eol=lf
+
+
+# List all binary files that should not be modified
+*.png binary
+*.jpg binary
+*.gif binary
