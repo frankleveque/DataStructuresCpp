@@ -25,58 +25,65 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 template <typename T>
 class BTNode{
+    private: 
+        T value;
     public:
+        BTNode();
+        explicit BTNode(const T&);
         std::shared_ptr<BTNode<T>> left;
         std::shared_ptr<BTNode<T>> right;
-        T value;
-        BTNode();
-        BTNode(T);
+        T getValue() const;
+        void setValue(const T& val);
         void insert(const BTNode<T>&) ;
-        uint32_t size() ;
+        size_t size() const;
 };
 
 template <typename T>
 BTNode<T>::BTNode(){
     left.reset();
     right.reset();
-
 }
 
 template <typename T>
-BTNode<T>::BTNode(T val): BTNode(){
+BTNode<T>::BTNode(const T& val): BTNode(){
+    this->value = val; 
+}
+
+template <typename T>
+T BTNode<T>::getValue() const{
+    return this->value;
+}
+
+template <typename T>
+void BTNode<T>::setValue(const T& val){
     this->value = val;
 }
 
-
-
 template <typename T>
 void BTNode<T>::insert(const BTNode<T>& other){
-
-    if(this->value == other.value){
+    if(this->value == other.getValue()){
         return;
     }
-    if(this->value > other.value){
+    if(this->value > other.getValue()){
         if(!left){
             left.reset(new BTNode<T>());
-            left->value = other.value;
+            left->setValue(other.getValue());
         }else{
             left->insert(other);
         }
-    }else if(this->value < other.value){
+    }else if(this->value < other.getValue()){
         if(!right){
             right.reset(new BTNode<T>());
-            right->value = other.value;
+            right->setValue(other.getValue());
         }else{
             right->insert(other);
         }
-
     }
 }
 
 template <typename T>
-uint32_t BTNode<T>::size(){
-    return 1 +
-        (right == nullptr ? 0 : right->size()) +
+size_t BTNode<T>::size() const{
+    return 1 + (right == nullptr ? 0 : right->size()) +
         (left == nullptr ? 0 : left->size());
 }
 #endif

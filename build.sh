@@ -20,6 +20,7 @@ mkdir -p build
 mkdir -p build/debug
 mkdir -p build/release
 mkdir -p build/codeblocks
+mkdir -p build/visual
 
 # generate projects 
 cd ./build/debug 
@@ -37,6 +38,10 @@ cmake -G "CodeBlocks - Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug" ../..
 
 cd ../../
 
+cd ./build/visual/
+cmake -G "Visual Studio 15 2017 Win64" ../.. 
+
+cd ../../
 echo ""
 
 echo ">> $OSTYPE detected" 
